@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,13 +15,13 @@
     
     <style>
         body {
-            background: linear-gradient(135deg, #2C3E50, #4CA1AF);
+            background: linear-gradient(135deg, #adb518, #4caf7d);
             font-family: 'Segoe UI', sans-serif;
             color: #fff;
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0);
             border-radius: 15px;
             backdrop-filter: blur(12px);
             padding: 20px;
@@ -79,144 +80,154 @@
         }
 
         /* Make navbar sticky + smooth background on scroll */
-.navbar {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(10px);
-    transition: background 0.3s ease, box-shadow 0.3s ease;
-}
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
 
-/* Optional: add shadow when scrolling */
-.navbar.scrolled {
-    background: rgba(0, 0, 0, 0.6);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
+        /* Optional: add shadow when scrolling */
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.6);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
 
-.carousel-item img {
-    height: 300px;
-    object-fit: cover;
-    border-radius: 15px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-}
+        .carousel-item img {
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
 
-.carousel {
-    border-radius: 20px;
-    overflow: hidden;
-}
+        .carousel {
+            border-radius: 20px;
+            overflow: hidden;
+        }
 
-@media (max-width: 767px) {
-    .navbar .text-light h4 {
-        font-size: 1.25rem;
-    }
+        /* Mobile responsive styles */
+        @media (max-width: 767px) {
+            .navbar .text-light h4 {
+                font-size: 1.1rem;
+            }
 
-    .navbar .small {
-        font-size: 0.65rem;
-    }
+            .navbar .small {
+                font-size: 0.6rem;
+            }
 
-    .navbar img {
-        width: 40px;
-        height: 40px;
-    }
+            .navbar img {
+                width: 35px;
+                height: 35px;
+            }
 
-    .navbar-collapse {
-        background-color: rgba(0, 0, 0, 0.3);
-        backdrop-filter: blur(8px);
-        border-radius: 10px;
-        padding: 10px;
-    }
-}
-/* Scrollable section styling */
-.scrollable-section {
-    max-height: 320px;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #ffffff55 transparent;
-}
+            .navbar-content {
+                flex-direction: column;
+                align-items: flex-start !important;
+                gap: 15px;
+            }
 
-.scrollable-section::-webkit-scrollbar {
-    width: 6px;
-}
-.scrollable-section::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.4);
-    border-radius: 4px;
-}
-.scrollable-section::-webkit-scrollbar-track {
-    background: transparent;
-}
+            .officials-section {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+                width: 100%;
+            }
 
-.login-btn {
-      background: linear-gradient(90deg, #662D8C, #ED1E79);
-      color: white;
-      border: none;
-      padding: 8px 20px;
-      border-radius: 8px;
-      font-weight: 500;
-      transition: transform 0.2s ease;
-    }
+            .official-item {
+                flex: 0 0 auto;
+            }
 
-    .login-btn:hover {
-      transform: translateY(-2px);
-    }
+            .login-section {
+                align-self: center;
+            }
+        }
 
+        /* Scrollable section styling */
+        .scrollable-section {
+            max-height: 320px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #ffffff55 transparent;
+        }
+
+        .scrollable-section::-webkit-scrollbar {
+            width: 6px;
+        }
+        .scrollable-section::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 4px;
+        }
+        .scrollable-section::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .login-btn {
+            background: linear-gradient(90deg, #662D8C, #ED1E79);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: transform 0.2s ease;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+        }
     </style>
 
-<script>
-    window.addEventListener('scroll', function () {
-        const navbar = document.querySelector('.navbar');
-        if (window.scrollY > 20) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-</script>
+    <script>
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 20) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
 
 </head>
 <body>
 
-<!-- Navbar Placeholder -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top py-2">
+<!-- Fixed Non-Collapsible Navbar -->
+<nav class="navbar navbar-dark py-2">
   <div class="container-fluid">
-
-    <!-- Left Side: Emblems + Text -->
-    <div class="d-flex align-items-center">
-      <img src="assets\APEmblem.png" alt="AP Emblem" width="50" height="50" class="me-2">
-      <img src="assets/samagra.png" alt="SS Emblem" width="50" height="50" class="me-3">
-      <div class="text-light">
-        <h4 class="mb-0 fw-bold">School Education & Samagra Shiksha</h4>
-        <small>Department of School Education, Vizianagaram District</small>
+    <div class="d-flex justify-content-between align-items-start w-100 navbar-content">
+      
+      <!-- Left Side: Emblems + Text -->
+      <div class="d-flex align-items-center">
+        <img src="assets\APEmblem.png" alt="AP Emblem" width="50" height="50" class="me-2">
+        <img src="assets/samagra.png" alt="SS Emblem" width="50" height="50" class="me-3">
+        <div class="text-light">
+          <h4 class="mb-0 fw-bold">School Education & Samagra Shiksha</h4>
+          <small>Department of School Education, Vizianagaram District</small>
+        </div>
       </div>
-    </div>
 
-    <!-- Toggler for Mobile -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <!-- Collapsible Content (Right Side) -->
-    <div class="collapse navbar-collapse mt-3 mt-lg-0" id="navbarCollapse">
-      <div class="d-flex flex-column flex-lg-row align-items-center ms-auto text-center text-lg-end gap-3">
-
-        <div class="text-center">
+      <!-- Right Side: Officials + Login -->
+      <div class="d-flex align-items-center gap-3 officials-section">
+        <div class="text-center official-item">
           <img src="assets/CBN.png" alt="CM" class="rounded-circle" width="50" height="50">
           <div class="small">Sri Nara Chandra Babu Naidu<br><em>Hon'ble Chief Minister</em></div>
         </div>
-        <div class="text-center">
+        <div class="text-center official-item">
           <img src="assets/lokesh.png" alt="Minister" class="rounded-circle" width="50" height="50">
           <div class="small">Sri Nara Lokesh<br><em>Education Minister</em></div>
         </div>
-        <div class="text-center">
+        <div class="text-center official-item">
           <img src="assets/collector.png" alt="Collector" class="rounded-circle" width="50" height="50">
           <div class="small">Sri B.R Ambedkar IAS<br><em>District Collector</em></div>
         </div>
-        <a href="AdminPage.html"><button class="login-btn"><i class="bi bi-box-arrow-right"></i> Login</button></a>
-
+        <div class="login-section">
+          <a href="AdminPage.html"><button class="login-btn"><i class="bi bi-box-arrow-right"></i> Login</button></a>
+        </div>
       </div>
-    </div>
 
+    </div>
   </div>
 </nav>
 
@@ -415,13 +426,13 @@
   </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="{% static 'images/carousel1.jpg' %}" class="d-block w-100 rounded-4" alt="Event 1">
+        <img src="assets/Children pic 1.jpg" class="d-block w-100 rounded-4" alt="Event 1">
       </div>
       <div class="carousel-item">
-        <img src="{% static 'images/carousel2.jpg' %}" class="d-block w-100 rounded-4" alt="Event 2">
+        <img src="assets/Children pic 2.jpg" class="d-block w-100 rounded-4" alt="Event 2">
       </div>
       <div class="carousel-item">
-        <img src="{% static 'images/carousel3.jpg' %}" class="d-block w-100 rounded-4" alt="Event 3">
+        <img src="assets/Children pic 3.jpg" class="d-block w-100 rounded-4" alt="Event 3">
       </div>
     </div>
     <!-- Controls -->
@@ -451,16 +462,17 @@
       <div class="col-md-4">
         <h5 class="fw-bold mb-2">📞 Contact</h5>
         <p class="mb-0">Phone: <a href="tel:+918912345678" class="text-white text-decoration-underline">+91 891-2345678</a></p>
-        <p>Email: <a href="mailto:deovzm.ap@nic.in" class="text-white text-decoration-underline">deovzm.ap@nic.in</a></p>
+        <p>Email DEO: <a href="mailto:deovizianagaram@gmail.com" class="text-white text-decoration-underline">deovizianagaram@gmail.com</a></p>
+        <p>Email SS: <a href="mailto:ssavzm@gmail.com" class="text-white text-decoration-underline">ssavzm@gmail.com</a></p>
       </div>
 
       <!-- Useful Links / Logo -->
       <div class="col-md-4">
         <h5 class="fw-bold mb-2">🌐 Useful Links</h5>
         <ul class="list-unstyled">
-          <li><a href="#" class="text-white text-decoration-underline">School Education Dept.</a></li>
-          <li><a href="#" class="text-white text-decoration-underline">Samagra Portal</a></li>
-          <li><a href="#" class="text-white text-decoration-underline">DEO Vizianagaram</a></li>
+          <li><a href="https://cse.ap.gov.in" class="text-white text-decoration-underline">School Education Dept.</a></li>
+          <li><a href="https://schoolinfra.ap.gov.in/STMSWorks/" class="text-white text-decoration-underline">Manabadi NaduNedu</a></li>
+          <li><a href="https://vizianagaram.ap.gov.in/notice/recruitment-of-non-teaching-staff-eligible-candidates-for-interview-for-filling-up-of-posts-of-non-teaching-staff-in-type-iii-kgbvs-on-outsourcing-basis-in-vizianagaram-district-samagra-shiksha-vi/" class="text-white text-decoration-underline">Vizianagaram Administration</a></li>
         </ul>
       </div>
 

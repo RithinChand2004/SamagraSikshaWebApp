@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +14,7 @@
 
   <style>
     body {
-      background: linear-gradient(135deg, #2C3E50, #4CA1AF);
+      background: linear-gradient(135deg, #adb518, #4caf7d);
       color: #fff;
       font-family: 'Segoe UI', sans-serif;
       scroll-behavior: smooth;
@@ -33,13 +34,25 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
 
+    .navbar .small {
+      font-size: 0.75rem;
+      line-height: 1.2;
+      color: #ffffffcc;
+    }
+
+    .navbar img {
+      border: 2px solid #ffffff55;
+      background-color: #ffffff11;
+      padding: 2px;
+    }
+
     .sidebar {
         width: 250px;
         background: rgba(0, 0, 0, 0.4);
         backdrop-filter: blur(8px);
         position: fixed;
         height: calc(100vh - 60px);
-        top: 108px;
+        top: 95px;
         left: 0;
         padding-top: 20px;
         overflow-y: auto;
@@ -136,7 +149,39 @@
       border-right: 1px solid #ccc;
     }
 
-    @media (max-width: 768px) {
+    /* Mobile responsive styles */
+    @media (max-width: 767px) {
+      .navbar .text-light h4 {
+        font-size: 1.1rem;
+      }
+
+      .navbar .small {
+        font-size: 0.6rem;
+      }
+
+      .navbar img {
+        width: 35px;
+        height: 35px;
+      }
+
+      .navbar-content {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 15px;
+      }
+
+      .officials-section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        width: 100%;
+      }
+
+      .official-item {
+        flex: 0 0 auto;
+      }
+
       .sidebar {
         left: -260px;
       }
@@ -160,44 +205,37 @@
 </head>
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark py-2">
+<!-- Fixed Non-Collapsible Navbar -->
+<nav class="navbar navbar-dark py-2">
   <div class="container-fluid">
-    <!-- Sidebar Toggler (commented out as per original) -->
-    <!-- <button class="sidebar-toggler" id="toggleSidebar"><i class="bi bi-list"></i></button> -->
-
-    <!-- Emblems + Text -->
-    <div class="d-flex align-items-center">
-      <img src="assets/APEmblem.png" alt="AP Emblem" width="50" height="50" class="me-2" />
-      <img src="./assets/samagra.png" alt="SS Emblem" width="50" height="50" class="me-3" />
-      <div class="text-light">
-        <h4 class="mb-0 fw-bold">School Education & Samagra Shiksha</h4>
-        <small>Department of School Education, Vizianagaram District</small>
+    <div class="d-flex justify-content-between align-items-start w-100 navbar-content">
+      
+      <!-- Left Side: Emblems + Text -->
+      <div class="d-flex align-items-center">
+        <img src="assets/APEmblem.png" alt="AP Emblem" width="50" height="50" class="me-2" />
+        <img src="./assets/samagra.png" alt="SS Emblem" width="50" height="50" class="me-3" />
+        <div class="text-light">
+          <h4 class="mb-0 fw-bold">School Education & Samagra Shiksha</h4>
+          <small>Department of School Education, Vizianagaram District</small>
+        </div>
       </div>
-    </div>
 
-    <!-- Mobile Toggle -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <!-- Right Side -->
-    <div class="collapse navbar-collapse mt-3 mt-lg-0" id="navbarCollapse">
-      <div class="d-flex flex-column flex-lg-row align-items-center ms-auto text-center text-lg-end gap-3">
-        <div class="text-center">
+      <!-- Right Side: Officials -->
+      <div class="d-flex align-items-center gap-3 officials-section">
+        <div class="text-center official-item">
           <img src="assets/CBN.png" alt="CM" class="rounded-circle" width="50" height="50" />
           <div class="small">Sri Nara Chandra Babu Naidu<br /><em>Hon'ble Chief Minister</em></div>
         </div>
-        <div class="text-center">
+        <div class="text-center official-item">
           <img src="assets/lokesh.png" alt="Minister" class="rounded-circle" width="50" height="50" />
           <div class="small">Sri Nara Lokesh<br /><em>Education Minister</em></div>
         </div>
-        <div class="text-center">
+        <div class="text-center official-item">
           <img src="assets/collector.png" alt="Collector" class="rounded-circle" width="50" height="50" />
           <div class="small">Sri B.R Ambedkar IAS<br /><em>District Collector</em></div>
         </div>
       </div>
+
     </div>
   </div>
 </nav>
