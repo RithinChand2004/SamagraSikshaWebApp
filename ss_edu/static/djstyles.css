@@ -1,0 +1,337 @@
+/* Global Styles */
+body {
+  background: linear-gradient(135deg, #ffffff, #ffffff);
+  color: #000000;
+  font-family: 'Segoe UI', sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Glass Card Component */
+.glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: scale(1.02);
+}
+
+/* Navbar Styles */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(8, 8, 8, 0.197);
+  backdrop-filter: blur(10px);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar.scrolled {
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.navbar .small {
+  font-size: 0.75rem;
+  line-height: 1.2;
+  color: #000000cc;
+}
+
+.navbar img {
+  border: 2px solid #78626255;
+  background-color: #ffffff11;
+  padding: 2px;
+}
+
+/* Button Styles */
+.login-btn, .logout-btn {
+  background: linear-gradient(90deg, #662D8C, #ED1E79);
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: transform 0.2s ease;
+}
+
+.login-btn:hover, .logout-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Better alignment and font for document tables */
+.table td {
+  vertical-align: top;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.table td a.download-btn {
+  display: inline-block;
+  margin-bottom: 4px;
+  color: #1a237e;
+  text-decoration: underline;
+}
+
+.table td a.download-btn:hover {
+  color: #ED1E79;
+  text-decoration: none;
+}
+/* 
+
+.download-btn {
+  background: #ffffff22;
+  color: #2C3E50;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  padding: 5px 15px;
+}
+
+.download-btn:hover {
+  background-color: #fff;
+  color: #000;
+} */
+
+/* Section Titles */
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+/* Navigation Pills */
+.nav-pills .nav-link.active {
+  background: linear-gradient(90deg, #662D8C, #ED1E79);
+  border-radius: 25px;
+}
+
+.nav-pills .nav-link {
+  color: #020000;
+  margin: 0 5px;
+}
+
+/* Scrollable Sections */
+.scrollable-section, .scrollable-box {
+  max-height: 320px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #ffffff55 transparent;
+}
+
+.scrollable-box {
+  max-height: 250px;
+}
+
+.scrollable-section::-webkit-scrollbar,
+.scrollable-box::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollable-section::-webkit-scrollbar-thumb,
+.scrollable-box::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+}
+
+.scrollable-section::-webkit-scrollbar-track,
+.scrollable-box::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Carousel Styles */
+.carousel-item img {
+  height: 400px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+
+.carousel {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* Footer Styles */
+footer {
+  margin-top: 50px;
+  padding: 20px 0;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.308);
+  border-top: 1px solid rgba(8, 8, 8, 0.197);
+}
+
+/* Admin Page Specific Styles */
+.sidebar {
+  width: 250px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  position: fixed;
+  height: calc(100vh - 60px);
+  top: 95px;
+  left: 0;
+  padding-top: 20px;
+  overflow-y: auto;
+  z-index: 1001;
+  transition: all 0.3s ease;
+}
+
+.sidebar .nav-link {
+  color: white;
+  margin: 10px;
+  font-weight: 500;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  background: linear-gradient(90deg, #662D8C, #ED1E79);
+  border-radius: 10px;
+}
+
+.main {
+  margin-left: 250px;
+  padding: 80px 30px 30px 30px;
+  transition: margin-left 0.3s ease;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+/* Quill Editor Styling */
+.ql-editor {
+  color: #333 !important;
+  background: white;
+  min-height: 150px;
+}
+
+.ql-toolbar {
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+.ql-container {
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 767px) {
+  .navbar .text-light h4 {
+    font-size: 1.1rem;
+  }
+
+  .navbar .small {
+    font-size: 0.6rem;
+  }
+
+  .navbar img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .navbar-content {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 15px;
+  }
+
+  .officials-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .official-item {
+    flex: 0 0 auto;
+  }
+
+  .login-section {
+    align-self: center;
+  }
+
+  /* Admin Page Mobile Styles */
+  .sidebar {
+    left: -260px;
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+
+  .main {
+    margin-left: 0;
+    padding: 90px 20px;
+  }
+
+  .topbar {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .scrollable-section, .scrollable-box {
+    max-height: 250px;
+  }
+}
+
+/* Login Page Styles */
+.login-form {
+    max-width: 500px;
+    margin: 30px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .login-form h2 {
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .login-form .btn-primary {
+    background: var(--primary-gradient);
+    border: none;
+    transition: all 0.3s ease;
+  }
+  
+  .login-form .btn-primary:hover {
+    background: linear-gradient(90deg, #ED1E79, #662D8C);
+    transform: scale(1.05);
+  }
+  
+  .login-form .forgot-password {
+    text-align: right;
+    font-size: 0.9rem;
+  }
+  
+  .login-form .forgot-password a {
+    text-decoration: none;
+    color: #662D8C;
+  }
+  
+  .login-form .forgot-password a:hover {
+    text-decoration: underline;
+  }
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #662D8C;
+}

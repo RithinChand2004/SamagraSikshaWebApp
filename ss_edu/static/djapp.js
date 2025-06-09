@@ -17,6 +17,22 @@ document.addEventListener('DOMContentLoaded', function() {
       once: true
     });
   }
+  if (document.querySelector('#deo')) {
+    loadAnnouncements('DEO', '#deo .list-group');
+    loadDocuments('DEO', '#deo table tbody');
+    loadAnnouncements('Samagra', '#samagra .list-group');
+    loadDocuments('Samagra', '#samagra table tbody');
+    loadAnnouncements('DIET', '#diet .list-group');
+    loadDocuments('DIET', '#diet table tbody');
+  }
+
+  // Admin Dashboard
+  if (document.querySelector('#delete-docs')) {
+    loadAdminDocuments('#delete-docs table tbody');
+  }
+  if (document.querySelector('#delete-announcement')) {
+    loadAdminAnnouncements('#delete-announcement table tbody');
+  }
 });
 
 // Navbar scroll effect
@@ -147,22 +163,42 @@ function handleDocumentUpload() {
 
 
 // Delete document handler (Admin Page)
-function deleteDocument(documentId) {
-  if (confirm('Are you sure you want to delete this document?')) {
-    // Here you would make an API call to delete the document
-    console.log('Deleting document with ID:', documentId);
-    alert('Document deleted successfully!');
+function deleteDocument(groupId) {
+  if (confirm('Are you sure you want to delete this document group?')) {
+    fetch(`/delete-document-group/${groupId}/`, {
+      method: 'DELETE'
+    })
+    .then(res => res.json())
+    .then(data => {
+      alert(data.message || 'Document group deleted');
+      loadAdminDocuments('#delete-docs table tbody');
+    })
+    .catch(err => {
+      console.error(err);
+      alert('Failed to delete document group');
+    });
   }
 }
+
 
 // Delete announcement handler (Admin Page)  
 function deleteAnnouncement(announcementId) {
   if (confirm('Are you sure you want to delete this announcement?')) {
-    // Here you would make an API call to delete the announcement
-    console.log('Deleting announcement with ID:', announcementId);
-    alert('Announcement deleted successfully!');
+    fetch(`/delete-announcement/${announcementId}/`, {
+      method: 'DELETE'
+    })
+    .then(res => res.json())
+    .then(data => {
+      alert(data.message || 'Announcement deleted');
+      loadAdminAnnouncements('#delete-announcement table tbody');
+    })
+    .catch(err => {
+      console.error(err);
+      alert('Failed to delete announcement');
+    });
   }
 }
+
 
 // Smooth scrolling for anchor links
 function smoothScrollTo(targetId) {
@@ -241,3 +277,105 @@ window.deleteDocument = deleteDocument;
 window.deleteAnnouncement = deleteAnnouncement;
 window.smoothScrollTo = smoothScrollTo;
 window.switchTab = switchTab;
+
+// Load announcements by category into a <ul>
+function loadAnnouncements(category, ulSelector) {
+  fetch(`/announcements/${category}/`)
+    .then(res => res.json())
+    .then(data => {
+      const ul = document.querySelector(ulSelector);
+      if (!ul) return;
+      ul.innerHTML = ''; // Clear existing
+
+      data.forEach(item => {
+        const li = document.createElement('li');
+        li.className = 'list-group-item bg-transparent';
+        const text = item.content.replace(/<[^>]+>/g, '').slice(0, 150);
+        li.innerHTML = `📌 ${item.content}`;
+        ul.appendChild(li);
+      });
+    });
+}
+
+// Load documents by category into a <tbody>
+function loadDocuments(category, tbodySelector) {
+  fetch(`/documents/${category}/`)
+    .then(res => res.json())
+    .then(data => {
+      const tbody = document.querySelector(tbodySelector);
+      if (!tbody) return;
+      tbody.innerHTML = '';
+
+      data.forEach(group => {
+        const fileLinks = group.files.map(file =>
+            `<div><a href="${file.file_url}" class="download-btn" target="_blank">${file.filename}</a></div>`
+        ).join('');
+
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${group.title}</td>
+          <td>${group.date_uploaded}</td>
+          <td>${fileLinks}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    });
+}
+
+
+function loadAdminAnnouncements(tbodySelector) {
+  const categories = ['DEO', 'Samagra', 'DIET'];
+  const tbody = document.querySelector(tbodySelector);
+  if (!tbody) return;
+  tbody.innerHTML = '';
+
+  categories.forEach(category => {
+    fetch(`/announcements/${category}/`)
+      .then(res => res.json())
+      .then(data => {
+        data.forEach(item => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${item.content}</td>
+            <td>${item.date_posted}</td>
+            <td>${item.category}</td>
+            <td><button class="btn btn-danger btn-sm" onclick="deleteAnnouncement(${item.id})">Delete</button></td>
+          `;
+          tbody.appendChild(row);
+        });
+      });
+  });
+}
+
+
+function loadAdminDocuments(tbodySelector) {
+  const categories = ['DEO', 'Samagra', 'DIET'];
+  const tbody = document.querySelector(tbodySelector);
+  if (!tbody) return;
+  tbody.innerHTML = '';
+
+  categories.forEach(category => {
+    fetch(`/documents/${category}/`)
+      .then(res => res.json())
+      .then(data => {
+        data.forEach(group => {
+          const filenames = group.files.map(file =>
+            file.filename
+          ).join(', ');
+
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${group.title}</td>
+            <td>${group.date_uploaded}</td>
+            <td>${group.category}</td>
+            <td>${filenames}</td>
+            <td><button class="btn btn-danger btn-sm" onclick="deleteDocument(${group.id})">Delete</button></td>
+          `;
+          tbody.appendChild(row);
+        });
+      });
+  });
+}
+
+
