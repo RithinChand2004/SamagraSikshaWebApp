@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Dashboard - SS</title>
+
+  <!-- Bootstrap CSS & Icons -->
+  <!-- Bootstrap 5 CSS -->
+    <link href="bootstrap-5.3.3-dist\css\bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- Quill Editor -->
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
+  <!-- Custom CSS -->
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Fixed Non-Collapsible Navbar -->
+<nav class="navbar navbar-dark py-2">
+  <div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-start w-100 navbar-content">
+      
+      <!-- Left Side: Emblems + Text -->
+      <div class="d-flex align-items-center">
+        <img src="assets/APEmblem.png" alt="AP Emblem" width="50" height="50" class="me-2" />
+        <img src="assets/samagra.png" alt="SS Emblem" width="50" height="50" class="me-3" />
+        <div class="text-dark">
+          <h4 class="mb-0 fw-bold">School Education & Samagra Shiksha</h4>
+          <small>Department of School Education, Vizianagaram District</small>
+        </div>
+      </div>
+
+      <!-- Right Side: Officials -->
+      <div class="d-flex align-items-center gap-3 officials-section">
+        <div class="text-center official-item">
+          <img src="assets/CBN.png" alt="CM" class="rounded-circle" width="50" height="50" />
+          <div class="small">Sri Nara Chandra Babu Naidu<br /><em>Hon'ble Chief Minister</em></div>
+        </div>
+        <div class="text-center official-item">
+          <img src="assets/lokesh.png" alt="Minister" class="rounded-circle" width="50" height="50" />
+          <div class="small">Sri Nara Lokesh<br /><em>Education Minister</em></div>
+        </div>
+        <div class="text-center official-item">
+          <img src="assets/collector.png" alt="Collector" class="rounded-circle" width="50" height="50" />
+          <div class="small">Sri B.R Ambedkar IAS<br /><em>District Collector</em></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+
+<!-- Hero Section -->
+     
+    <!-- Page Header -->
+<div class="container text-center mt-5 pt-5" data-aos="fade-down">
+    <h1 class="display-6 fw-bold">School Education & Samagra Shiksha, Vizianagaram</h1>
+    <p class="lead">Enter Username and Password and click Login</p>
+</div>
+
+
+<!-- Login Form -->
+    <div class="login-form">
+        <h2>Login</h2>
+        <form>
+            <div class="mb-3">
+                <label for="employeeID" class="form-label">Employee ID</label>
+                <input type="text" class="form-control" id="employeeID" placeholder="Enter your Employee ID" required>
+            </div>
+            <div class="mb-3 position-relative">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                <i class="bi bi-eye-slash toggle-password" id="togglePassword"></i>
+            </div>
+            <div class="forgot-password">
+                <label for="forgotPassword">Forgot Password? - Contact Admin</label>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="login-btn">Login</button>
+            </div>
+        </form>
+    </div>
+
+<script src="app.js" defer></script>
+<script src=" bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
